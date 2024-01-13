@@ -9,7 +9,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_path(list.id)
     else
-      render :index
+      redirect_to new_list_path
     end
   end
 
