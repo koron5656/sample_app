@@ -8,9 +8,10 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     if @list.save
       flash[:notice] = "投稿に成功しました。"
-      redirect_to list_path(list.id)
+      redirect_to list_path(@list.id)
     else
-      redirect_to new_list_path
+      flash.now[:alert] = "投稿に失敗しました。" #キーをalertに変更
+      render :new
     end
   end
 
